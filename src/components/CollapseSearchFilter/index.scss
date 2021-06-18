@@ -1,0 +1,103 @@
+$max-form-item-width: unset;
+$min-form-item-width: 288px;
+$count-per-line: 3, 4, 5, 6, 7, 8, 9;
+$media-screen-width: i, icon;
+$form-item-padding: 6px;
+@each $count in $count-per-line {
+  @media screen and (min-width: #{$count * $min-form-item-width + 220}) {
+    .collapse-search-filter .el-form-item{
+        width: percentage(1 / $count);
+    }
+  }
+}
+
+.collapse-search-filter{
+  margin: 20px 0 7px;
+  position: relative;
+  .h-form{
+    .el-form-item{
+      margin: 0 0 14px;
+    }
+  }
+  .el-form-item__content{
+    width: 100%;
+  }
+  .static-form{
+    justify-content: flex-end;
+    align-items: center;
+    .h-form{
+      margin-right: 12px !important;
+      .el-form-item{
+        width: 220px;
+      }
+    }
+    .filter-btn{
+      border-radius: 3px !important;
+      margin-bottom: 14px;
+      &.is-filtering{
+        color: $color-primary;
+        background-color: #fff;
+        border-color: $color-primary;
+      }
+    }
+  }
+  .collapse-form{
+    padding: 0 20px 20px;
+    position: absolute;
+    z-index: 999;
+    background: rgb(255, 255, 255);
+    width: calc(100vw - 220px);
+    min-width: 1030px;
+    right: -20px;
+    top: 52px;
+    transition: transform 0.1s ease, opacity 0s linear 0.1s;
+    transform-origin: top center;
+    transform: scaleY(0);
+    opacity: 0;
+    // visibility: hidden;
+    &.is-open{
+      transform: scaleY(1);
+      opacity: 1;
+      // visibility: visible;
+      transition: transform 0.25s ease, opacity 0s;
+      .h-form{
+        opacity: 1;
+        transform: translateY(0);
+        transition: transform .3s ease,opacity .2s linear;
+        transition-delay: .2s;
+      }
+    }
+    .h-form{
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: transform 0.1s, opacity 0.1s;
+      transition-delay: 0s;
+      margin-right: -$form-item-padding !important;
+      margin-left: -$form-item-padding !important;
+    }
+    .el-form-item{
+      padding-left: $form-item-padding;
+      padding-right: $form-item-padding;
+      max-width: #{$max-form-item-width};
+      min-width: #{$min-form-item-width};
+    }
+    .append-form-item {
+      width: 100px;
+      flex: 0 0 auto;
+      padding-left: $form-item-padding;
+      .el-input__inner{
+        padding-right: 20px;
+      }
+    }
+  }
+  .el-select .el-input {
+    .el-input__inner {
+      &::placeholder {
+        color: #606266 !important;
+      }
+    }
+  }
+
+
+}
+

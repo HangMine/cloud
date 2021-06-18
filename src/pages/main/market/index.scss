@@ -1,0 +1,51 @@
+
+@mixin color-cell($width) {
+  .color-cell{
+    width: $width;
+    display: flex;
+    align-items: center;
+
+    .color-name{
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      }
+    .color-family{
+      flex-shrink: 0;
+    }
+  }
+}
+.public-market{
+  .color-info-dropdown-table{
+    width: 100%;
+    overflow: hidden;
+    .color-info-table{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      @include color-cell(calc(100% - 36px));
+      i{
+        flex-shrink: 0;
+      }
+    }
+  }
+  .color-info-table{
+    display: block;
+    text-align: left;
+  }
+  
+}
+.color-info-dropdown{
+  width: 190px;
+  @include color-cell(100%);
+  .more-color-info{
+    text-align: center;
+    color: $color-primary;
+    font-size: 12px;
+    line-height: 20px;
+    &:hover,&:focus{
+      background-color: initial;
+      color: $color-primary
+    }
+  }
+}

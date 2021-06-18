@@ -1,0 +1,46 @@
+@import '../assets/font/iconfont.json';
+
+@font-face {
+  font-family: "iconfont";
+  src: url('../assets/font/iconfont.eot');
+  /* IE9 */
+  src: url('../assets/font/iconfont.eot#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../assets/font/iconfont.woff') format('woff'),
+    url('../assets/font/iconfont.ttf') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('../assets/font/iconfont.svg') format('svg');
+  /* iOS 4.1- */
+}
+
+
+@function get-named-icon-selector($name) {
+  $result: ('#{$iconfont-selector}.icon#{$name}');
+  @each $prefix in $icon-selector-prefix {
+    $result: append($result, '.#{$prefix}-#{$name}', $separator: comma);
+  }
+  @return $result;
+}
+
+#{$icon-selectors} {
+  font-family: "iconfont";
+  @include resize-icon(1.14285);
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@each $glyph in $glyphs {
+  $name: "#{map-get($glyph, "font_class")}";
+  $withslash: "\"\\#{map-get($glyph, "unicode")}\"";
+  // 如果name以-开头，去掉
+  @if (str-index($name, '-') == 1) {
+    $name: str-slice($name, 2);
+  }
+  // 第一个是为了兼容
+  #{get-named-icon-selector($name)} {
+    &:before {
+      content: unquote($withslash);
+    }
+  }
+}

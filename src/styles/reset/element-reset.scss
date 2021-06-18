@@ -1,0 +1,86 @@
+@import "~element-plus/packages/theme-chalk/src/index";
+
+.el-button {
+  min-height: 32px  !important;
+  border-radius: 16px;
+  letter-spacing: 1px;
+}
+
+// 去除部分组件的outline
+.el-tooltip[tabindex],.el-drawer,.el-drawer__container{
+  outline: none;
+}
+
+.el-overlay{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  &:before, &:after{
+    display: block;
+    content: ' ';
+  }
+}
+
+.el-dialog{
+  flex-shrink:0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+    // max-height: 70vh;
+    // display: flex;
+    // flex-direction: column;
+    // margin: 0 auto;
+    // position: absolute;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    // .el-dialog__body{
+    //   overflow: auto;
+    // }
+
+  .el-dialog__body{
+    padding: 10px 30px 30px;
+  }
+}
+
+.el-popper[role=tooltip]{
+  line-height: 20px;
+}
+
+/* 表单相关 form */
+// 表单field 必须校验时，显示的小红星样式
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
+  content: '*';
+  display: inline-block;
+  position: relative;
+  /* top: -3px; */
+  color: #F56C6C;
+  margin-right: 4px;
+  font-size: 16px;
+  height: 20px;
+  overflow: hidden;
+}
+
+// 表格
+.el-table__body tr.hover-row > td, .el-table__body tr.hover-row.current-row > td,
+.el-table__body tr.hover-row.el-table__row--striped > td, .el-table__body tr.hover-row.el-table__row--striped.current-row > td {
+  background-color: #EAF2FF;
+}
+// 行高亮
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: #EAF2FF !important;
+}
+// 固定样式 row cells
+.customer-header {
+  background-color: #F5F5F5 !important;
+  color: #333;
+  font-weight: 900;
+}
+.customer-row {
+  padding: 10px 0;
+}
+
+.el-form .el-form-item__label{
+  color: #222;
+}

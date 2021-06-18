@@ -1,0 +1,49 @@
+/* ModelList page shoes or filders container */
+%models-container {
+  // margin-right: -20px;
+
+  .shoes-list {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 60vh;
+
+    .shoes-item {
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// Flex
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flex
+%flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+%align-horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+
+%align-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin resize-icon($size) {
+  font-size: percentage($size);
+  line-height: (1/$size);
+  vertical-align: percentage(((1/$size - 1) / 2));
+}
